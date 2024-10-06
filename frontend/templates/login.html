@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Spotify</title>
+    <link rel="shortcut icon" href="{% static 'img/favicon.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+    </head>
+<body>
+    <div class="container">
+        
+        <div class="logo"><img src="{% static 'img/spotify-logo.png' %}" alt=""></div>
+        <h1>Log in to Spotify</h1>
+
+        <form action="" method="post">
+            {% csrf_token %}
+            <button class="icon-btn"><img src="{% static 'img/google.png' %}" alt=""><span class="encore-text encore-text-body-medium-bold sc-iKTcqh sc-tOkKi sc-eJgwjL doOTMr ifVOsT gLIwsz" data-encore-id="text">Continue with Google</span></button>
+            <button class="icon-btn"><img src="{% static 'img/facebook.png' %}" alt=""><span class="encore-text encore-text-body-medium-bold sc-iKTcqh sc-tOkKi sc-eJgwjL doOTMr ifVOsT gLIwsz" data-encore-id="text">Continue with Facebook</span></button>
+            <button class="icon-btn"><img src="{% static 'img/apple.png' %}" alt=""><span class="encore-text encore-text-body-medium-bold sc-iKTcqh sc-tOkKi sc-eJgwjL doOTMr ifVOsT gLIwsz" data-encore-id="text">Continue with Apple</span></button>
+            <button class="icon-btn"><span class="encore-text encore-text-body-medium-bold sc-iKTcqh sc-tOkKi sc-eJgwjL doOTMr ifVOsT gLIwsz" data-encore-id="text">Continue with phone number</span></button>
+
+            <div class="line"></div>
+
+            <label for="">Email or username</label><br>
+            <input type="text" name="username" placeholder="Email or username"><br>
+            <label for="">Password</label><br>
+            <input type="text" name="password" placeholder="Password"><br>
+            <button type="submit" class="next">Next</button>.
+            
+            <div class="forget"><a href="">Forget your password?</a></div>
+
+            <div class="account">Don't have an account? &nbsp; <a href="{% url 'signup' %}">Sign up for spotify</a></div>
+
+
+        </form>
+
+        <p class="term">This site protected by reCAPTCHA and the google <br> <a href="" class="privacy">Privacy Policy</a>
+        and <a href="" class="privacy">Term of Service </a> apply.
+        </p>
+
+
+    </div>
+</body>
+</html>

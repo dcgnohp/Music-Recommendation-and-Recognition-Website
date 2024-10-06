@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block artists_section %}
+<div class="section-header">
+    <h3>Popular artists</h3>
+</div>
+<div class="artists-grid">
+    {% if all_artists %}
+        {% for artist in all_artists %}
+        <a href="{% url 'profile' artist.id %}" class="artist-card">
+            <div class="card">
+                <img src="{{ artist.image }}" class="card-img" alt="{{ artist.name }}" />
+                <p class="card-name">{{ artist.name }}</p>
+                <p class="card-title">Artist</p>
+            </div>
+        </a>
+        {% endfor %}
+    {% else %}
+        <p>Không có dữ liệu nghệ sĩ</p>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block additional_content %}
+{% endblock %}
+{% block player %}
+{% endblock %}

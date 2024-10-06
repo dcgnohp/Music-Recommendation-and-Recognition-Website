@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up - Spotify</title>
+    <link rel="stylesheet" href="{% static 'signup.css' %}">
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
+</head>
+<body>
+    <div class="container">
+        <div class="logo"><img src="{% static './img/spotify-logo.png' %}" alt=""></div>
+        <h1>Sign up to <span>start listening</span></h1>
+        
+        <form action="" method="post">
+            <style>
+                h5 {
+                    color: red;
+                    font-size: 14px;
+                }
+                </style>
+                {% for message in messages %}
+                <h5 style="margin-top: 30px; margin-bottom: 10px; font-style: italic;">{{message}}</h5>
+                {% endfor %}
+        
+            {% csrf_token %}
+            <label for="">Username</label><br>
+            <input type="text" name="username" placeholder="Username"><br>
+            <label for="">Email address</label><br>
+            <input type="email" name="email" placeholder="name@domain.com"><br>
+            <label for="">Password</label><br>
+            <input type="password" name="password" placeholder="Password"><br>
+            <label for="">Confirm password</label><br>
+            <input type="password" name="password2" placeholder="ConfirmPassword"><br>
+            <a href="">Use phone number instead. </a><br>
+            
+            <button type="submit" class="next">Next</button>
+
+            <div class="line"></div> <br>
+
+            <button class="icon-btn"><img src="{% static './img/google.png' %}" alt="">Sign up with Google</button>
+            <button class="icon-btn"><img src="{% static './img/facebook.png' %}" alt="">Sign up with Facebook</button>
+            <button class="icon-btn"><img src="{% static './img/apple.png' %}" alt="">Sign up with Apple</button>
+
+            <div class="line2"></div>
+
+            <div class="already">Already have an account? <a href="{% url 'login' %}" style="text-decoration: none; color: #1ed760;">Log in</a></div>
+
+            <p class="term">This site is protected by reCAPTCHA and the Google <br> <a href="" class="privacy">Privacy Policy </a> and <a href="" class="privacy">Term of Service</a> apply.</p>
+        </form>
+    </div>
+</body>
+</html>

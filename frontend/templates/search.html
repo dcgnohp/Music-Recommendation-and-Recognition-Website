@@ -1,0 +1,53 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block artists_section %}
+<h1 class="text-2xl font-bold mb-4">Search Results:</h1>
+
+<div class="section-header">
+<h3 class="text-xl font-semibold mb-2 mt-4">Artists</h3>
+</div>
+
+<div class="artists-grid">
+  {% if artists %}
+      {% for artist in artists %}
+      <a href="{% url 'profile' pk=artist.id %}" class="artist-card">
+          <div class="card">
+              <img src="{{ artist.images.0.url }}" class="card-img" alt="{{ artist.name }}" />
+              <p class="card-name">{{ artist.name }}</p>
+              <p class="card-title">Artist</p>
+          </div>
+      </a>
+      {% endfor %}
+  {% else %}
+      <p>No results found for "{{ query }}</p>
+  {% endif %}
+</div>
+
+<h3 class="text-xl font-semibold mb-2 mt-4">Tracks</h3>
+{% if tracks %}
+<div class="cards-track-container">
+  {% for track in tracks %}
+  <a href="/music/{{track.id}}" style="text-decoration: none; color: inherit;">
+  <div class="card-track">
+    <img src="{{track.album.images.0.url}}" class="card-track-img" />
+    <p class="card-track-name">{{track.name}}</p>
+    <p class="card-track-description">
+    {% for artist in track.artists %}
+      {{artist.name}}{% if not forloop.last %}, {% endif %}
+    {% endfor %}
+    </p>
+  </div>
+  </a>
+  {% endfor %}
+</div>
+{% endif%}
+
+{% if not artists and not tracks %}
+<p>No results found for "{{ query }}"</p>
+{% endif %}
+{% endblock %}
+
+{% block additional_content %}
+{%endblock%}
+{% block player%}
+{% endblock %}

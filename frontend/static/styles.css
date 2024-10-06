@@ -1,0 +1,630 @@
+:root {
+  --black: #000;
+  --grey: #121212;
+  --light-grey: #232323;
+  --white: #fff;
+  
+}
+*{
+  font-family: SpotifyMixUI-Regular, CircularSp-Arab, CircularSp-Hebr, CircularSp-Cyrl, CircularSp-Grek, CircularSp-Deva, var(--fallback-fonts, sans-serif);
+}
+body,
+html {
+  height: 100%;
+  margin: 0rem;
+  display: flex;
+  flex-direction: column;
+  font-family: "Nunito", sans-serif;
+  background-color: var(--black);
+  color: var(--white);
+}
+
+a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+.container {
+  display: flex;
+  flex: 1;
+  background-color: var(--black);
+  padding: 0.5rem;
+}
+
+.sidebar {
+  flex: 0.2;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  margin-right: 0.5rem;
+}
+
+.top-icons {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem 1.5rem;
+  margin-bottom: 0.5rem;
+  background-color: var(--grey);
+  border-radius: 0.5rem;
+}
+.library-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Căn giữa theo chiều dọc */
+  background-color: var(--grey);
+  padding: 0.3rem 0;
+  border-radius: 0.5rem;
+}
+
+.link-flex {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  align-items: center;
+  opacity: 0.7;
+  font-weight: 600;
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 0.3rem 0;
+}
+
+.link-flex:hover {
+  opacity: 1;
+  transition: all 0.3s;
+}
+
+.link-flex img {
+  height: 1.2rem;
+  width: 1.2rem;
+}
+.link-flex p {
+  font-size: 0.9rem;
+  color: var(--white);
+}
+.library-actions {
+  display: flex;
+  align-items: center; /* Căn giữa theo chiều dọc */
+  gap: 1rem;
+  padding-right: 0;
+  margin-right: 0;
+}
+.library-actions img {
+  height: 1.2rem;
+  width: 1.2rem;
+  display: block; /* Đảm bảo rằng hình ảnh là một khối */
+}
+.library {
+  border-radius: 0.5rem;
+  flex: 3;
+  overflow-y: auto;
+  background-color: var(--grey);
+  padding: 0.5rem 1.5rem;
+}
+
+.flex-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  justify-items: center;
+}
+
+.flex-top img {
+  height: 1rem;
+  width: 1rem;
+  opacity: 0.8;
+  margin-top: 0.5rem;
+}
+
+.flex-top p {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.flex-top p:hover {
+  opacity: 1;
+  transition: all 0.3s;
+}
+
+.flex-top img:hover {
+  opacity: 1;
+  transition: all 0.3s;
+}
+
+.chip {
+  margin-top: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background-color: var(--light-grey);
+  border-radius: 5rem;
+  width: fit-content;
+  font-weight: normal;
+  color: var(--white);
+}
+
+.main-content {
+  flex: 0.8;
+  overflow-y: auto;
+  background-color: var(--grey);
+  display: flex;
+  flex-direction: column;
+  padding: 0rem 1rem;
+  border-radius: 0.5rem;
+  padding-bottom: 2rem; /* Tăng padding dưới nếu cần */
+}
+
+.album-flex {
+  margin-bottom: 1rem !important;
+}
+
+.albums {
+  margin-top: 1rem;
+}
+
+.album-cover {
+  height: 3rem !important;
+  width: 3rem !important;
+  border-radius: 0.2rem;
+}
+
+.col-flex p {
+  margin: 0;
+  font-weight: normal;
+  font-size: 0.8rem;
+}
+
+.album-name {
+  color: var(--white);
+  margin-bottom: 0.35rem !important;
+  font-size: 1rem !important;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0rem;
+  align-items: center;
+  background-color: var(--grey);
+  z-index: 1000;
+  /* Other styles as needed */
+}
+
+.cards-container {
+  display: flex;
+  gap: 1rem;
+  overflow-x: none;
+  padding: 1rem 0;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  /* Thêm các thuộc tính sau */
+  height: auto; /* Cho phép container mở rộng theo chiều cao của nội dung */
+  min-height: 220px; /* Đặt chiều cao tối thiểu nếu cần */
+}
+
+.cards-container::-webkit-scrollbar {
+  display: none;  /* WebKit */
+  
+}
+
+.card {
+  flex: 0 0 auto;
+  width: 170px;
+  min-width: 170px;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  /* Thêm thuộc tính sau */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Đảm bảo nội dung được phân bố đều */
+  height: 100%; /* Đảm bảo card lấp đầy chiều cao của container */
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  background-color: var(--light-grey);
+}
+
+.card-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 0.1rem;
+}
+
+.card-name{
+  margin: 0.1rem 0;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.card-title{
+  margin: 0;
+  font-size: 0.8rem;
+  opacity: 0.5;
+}
+
+.player {
+  width: 100%;
+  height: 80px; /* Adjust as needed */
+  position: fixed;
+  bottom: 0;
+  background-color: var(--black);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.volume-controls {
+  width: 20vw;
+}
+
+.player-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40vw;
+}
+
+.player-controls {
+  display: flex;
+  align-items: center;
+}
+
+.volume-controls {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 2rem;
+}
+
+.player-timeline {
+  display: flex;
+  align-items: center;
+}
+
+.timeline-slider {
+  margin: 0 10px;
+  width: 40vw;
+}
+
+.volume-slider {
+  width: 100px;
+  height: 4px;
+}
+
+.timeline-slider:hover,
+.volume-slider:hover {
+  background-color: #1bd760;
+}
+.timeline-slider,
+.volume-slider {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.timeline-slider::-webkit-slider-runnable-track,
+.volume-slider::-webkit-slider-runnable-track {
+  height: 4px;
+  background: #ddd;
+  border: none;
+  border-radius: 100px;
+}
+
+.timeline-slider::-webkit-slider-thumb,
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #1bd760;
+  margin-top: -6px;
+}
+
+.timeline-slider:focus,
+.volume-slider:focus {
+  outline: none;
+}
+
+.timeline-slider:focus::-webkit-slider-runnable-track {
+  background: #ccc;
+}
+.cards-track-container {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  /* Other styles as needed */
+}
+
+.card-track {
+  width: 170px;
+  padding: 0.75rem;
+  margin-right: 0.25rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: auto;
+  overflow: hidden; /* Thêm dòng này */
+  transition: all 0.3s ease;
+}
+
+.card-track:hover {
+  transform: scale(1.05);
+  background-color: var(--light-grey);
+  z-index: 1;
+}
+
+.card-track-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 0.5rem; /* Thay đổi từ 50% thành 0.5rem để phù hợp với hình ảnh */
+  margin-bottom: 0.5rem;
+}
+
+.card-track-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.card-track:hover .card-track-name {
+  overflow: visible;
+}
+
+.card-track:hover .card-track-name:not(:hover) {
+  animation: none;
+}
+
+.card-track:hover .card-track-name.long-name {
+  animation: marquee 5s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+.card-track-description {
+  margin: 0;
+  font-size: 0.8rem;
+  opacity: 0.5;
+}
+
+.cards-container {
+  display: flex;
+  gap: 1rem;
+  overflow-x: none;
+  padding: 1rem 0;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  /* Thêm các thuộc tính sau */
+  height: auto; /* Cho phép container mở rộng theo chiều cao của nội dung */
+  min-height: 220px; /* Đặt chiều cao tối thiểu nếu cần */
+}
+
+.cards-container::-webkit-scrollbar {
+  display: none;  /* WebKit */
+  
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.section-header h3 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.show-all-btn {
+    background: none;
+    border: none;
+    color: #b3b3b3;
+    font-size: 14px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.show-all-btn:hover {
+    color: #ffffff;
+}
+
+.artists-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 50px;
+    overflow-y: none;
+    padding: 30px;
+}
+
+.artist-card {
+    text-decoration: none;
+    color: inherit;
+}
+@media (max-width: 1200px) {
+    .artists-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .artists-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+.icon-container {
+  border-radius: 10px;
+  position: fixed; /* Cố định vị trí icon */
+  bottom: 45px; /* Khoảng cách từ dưới đáy trang */
+  right: 5px; /* Khoảng cách từ mép phải */
+  z-index: 100; /* Đảm bảo icon hiển thị trên các phần tử khác */
+  transform: translate(-50%, -50%); /* Di chuyển icon về trung tâm */
+  display: flex; /* Chuyển đổi container thành flexbox */
+  align-items: center; /* Canh giữa các mục theo chiều dọc */
+}
+
+.icon-container img { /* Tự động điều chỉnh chiều cao */
+  cursor: pointer;
+  transition: transform 0.5s ease-in-out;
+  /* Tạo hiệu ứng chuyển đổi mượt mà */
+}
+.icon-container img:hover {
+  transform: scale(1.05);
+}
+.spotify-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 32px 0px;
+  background-color: #000;
+  color: #fff;
+}
+
+.left-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  margin-right: 24px;
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+.logo:hover {
+  transform: scale(1.05); 
+}
+
+.spotify-logo {
+  margin-top:10px;
+  fill: white;
+}
+
+.center-section {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 15rem;
+}
+
+.nav-button {
+  background: none;
+  border: none;
+  color: #fff;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.home-icon {
+  background-color: #242424; /* Thêm background cho biểu tượng home */
+  border-radius: 50%; /* Làm tròn background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px; /* Đảm bảo chiều rộng và chiều cao bằng nhau */
+  height: 48px; /* Đảm bảo chiều rộng và chiều cao bằng nhau */
+  transition: transform 0.3s ease-in-out;
+  text-decoration: none;
+}
+.home-icon:hover {
+  transform: scale(1.05); 
+}
+.search-form {
+  flex: 1;
+  outline: none; /* Loại bỏ viền khi focus */
+  box-shadow: none;
+  display: flex;
+}
+.search-form input {
+  text-decoration: none;
+  background: none;
+  border: none;
+  color: #ffffffa5;
+  width: 100%;
+  outline: none !important; /* Loại bỏ viền khi focus */
+  box-shadow: none !important; /* Loại bỏ box-shadow khi focus */
+  font-size: 15px;
+  font-family: SpotifyMixUI-Regular, CircularSp-Arab, CircularSp-Hebr, CircularSp-Cyrl, CircularSp-Grek, CircularSp-Deva, var(--fallback-fonts, sans-serif);
+}
+.search-bar {
+  flex:1;
+  display: flex;
+  align-items: center;
+  background-color: #242424;
+  border-radius: 500px;
+  padding: 12px 16px;
+  max-width: 350px;
+  transition: transform 0.3s ease-in-out;
+}
+.search-bar:hover {
+  transform: scale(1.02); 
+}
+
+.search-bar svg {
+  margin-right: 5px;
+}
+
+.search-bar input {
+  background: none;
+  border: none;
+  color: #ffffffa5;
+  width: 100%;
+  outline: none; /* Loại bỏ viền khi focus */
+  box-shadow: none; /* Loại bỏ box-shadow khi focus */
+  font-size: 15px;
+  font-family: SpotifyMixUI-Regular, CircularSp-Arab, CircularSp-Hebr, CircularSp-Cyrl, CircularSp-Grek, CircularSp-Deva, var(--fallback-fonts, sans-serif);
+}
+
+.search-bar input::placeholder {
+  color: #a7a7a7;
+}
+
+.right-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.login-button, .logout-button {
+  font-weight: bold;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 500px;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.logout-button {
+  background: none;
+  border: none;
+  color: #a7a7a7;
+}
+
+.login-button {
+  background-color: #fff;
+  color: #000;
+  border: none;
+}
+
+.logout-button:hover {
+  color: #fff;
+}
+
+.login-button:hover {
+  transform: scale(1.04);
+}

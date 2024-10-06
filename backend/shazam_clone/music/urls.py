@@ -1,0 +1,17 @@
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.index, name='index'),
+    path('login/', views.login, name='login'),
+    path('signup/', views.signup, name='signup'),
+    path('logout/', views.logout, name='logout'),
+    path('music/<str:pk>/', views.music, name='music'),
+    path('profile/<str:pk>/', views.profile, name='profile'),
+    path('search/', views.search, name='search'),
+    path('shazam/', views.shazam_view, name='shazam'),
+    path('artist_page/', views.artist_page, name='artist_page'),
+    path('recognize', views.recognize, name='recognize'),
+    #path('callback/', views.spotify_callback, name='spotify_callback'),
+]
+

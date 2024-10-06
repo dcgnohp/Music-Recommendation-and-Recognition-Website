@@ -1,0 +1,347 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Spotify - Web Player: Music for everyone</title>
+    <meta name="description" content="Spotify clone made using html,css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/logo.png' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+<header class="spotify-header">
+  <div class="left-section">
+    <div class="logo">
+      <a href="/">
+      <svg role="img" viewBox="0 0 168 30" aria-label="Spotify" height="50" width="300" class="spotify-logo">
+        <title>Spotify</title>
+        <path d="M13.427.01C6.805-.253 1.224 4.902.961 11.524.698 18.147 5.853 23.728 12.476 23.99c6.622.263 12.203-4.892 12.466-11.514S20.049.272 13.427.01m5.066 17.579a.717.717 0 0 1-.977.268 14.4 14.4 0 0 0-5.138-1.747 14.4 14.4 0 0 0-5.42.263.717.717 0 0 1-.338-1.392c1.95-.474 3.955-.571 5.958-.29 2.003.282 3.903.928 5.647 1.92a.717.717 0 0 1 .268.978m1.577-3.15a.93.93 0 0 1-1.262.376 17.7 17.7 0 0 0-5.972-2.208 17.7 17.7 0 0 0-6.281.238.93.93 0 0 1-1.11-.71.93.93 0 0 1 .71-1.11 19.5 19.5 0 0 1 6.94-.262 19.5 19.5 0 0 1 6.599 2.165c.452.245.62.81.376 1.263m1.748-3.551a1.147 1.147 0 0 1-1.546.488 21.4 21.4 0 0 0-6.918-2.208 21.4 21.4 0 0 0-7.259.215 1.146 1.146 0 0 1-.456-2.246 23.7 23.7 0 0 1 8.034-.24 23.7 23.7 0 0 1 7.657 2.445c.561.292.78.984.488 1.546m13.612-.036-.832-.247c-1.67-.495-2.14-.681-2.14-1.353 0-.637.708-1.327 2.264-1.327 1.539 0 2.839.752 3.51 1.31.116.096.24.052.24-.098V6.935c0-.097-.027-.15-.098-.203-.83-.62-2.272-1.07-3.723-1.07-2.953 0-4.722 1.68-4.722 3.59 0 2.157 1.371 2.91 3.626 3.546l.973.274c1.689.478 1.998.902 1.998 1.556 0 1.097-.831 1.433-2.07 1.433-1.556 0-3.457-.911-4.35-2.025-.08-.098-.177-.053-.177.062v2.423c0 .097.01.141.08.22.743.814 2.52 1.53 4.59 1.53 2.546 0 4.456-1.485 4.456-3.784 0-1.787-1.052-2.865-3.625-3.635m10.107-1.76c-1.68 0-2.653 1.026-3.219 2.052V9.376c0-.08-.044-.124-.124-.124h-2.22c-.079 0-.123.044-.123.124V20.72c0 .08.044.124.124.124h2.22c.079 0 .123-.044.123-.124v-4.536c.566 1.025 1.521 2.034 3.237 2.034 2.264 0 3.89-1.955 3.89-4.581s-1.644-4.545-3.908-4.545m-.654 6.986c-1.185 0-2.211-1.167-2.618-2.458.407-1.362 1.344-2.405 2.618-2.405 1.211 0 2.051.92 2.051 2.423s-.84 2.44-2.051 2.44m40.633-6.826h-2.264c-.08 0-.115.017-.15.097l-2.282 5.483-2.29-5.483c-.035-.08-.07-.097-.15-.097h-3.661v-.584c0-.955.645-1.397 1.476-1.397.496 0 1.035.256 1.415.486.089.053.15-.008.115-.088l-.796-1.901a.26.26 0 0 0-.124-.133c-.389-.203-1.025-.38-1.644-.38-1.875 0-2.954 1.432-2.954 3.254v.743h-1.503c-.08 0-.124.044-.124.124v1.768c0 .08.044.124.124.124h1.503v6.668c0 .08.044.123.124.123h2.264c.08 0 .124-.044.124-.123v-6.668h1.936l2.812 6.11-1.512 3.325c-.044.098.009.142.097.142h2.414c.08 0 .116-.018.15-.097l4.997-11.355c.035-.08-.009-.141-.097-.141M54.964 9.04c-2.865 0-4.837 2.025-4.837 4.616 0 2.573 1.971 4.616 4.837 4.616 2.856 0 4.846-2.043 4.846-4.616 0-2.591-1.99-4.616-4.846-4.616m.008 7.065c-1.37 0-2.343-1.043-2.343-2.45 0-1.405.973-2.449 2.343-2.449 1.362 0 2.335 1.043 2.335 2.45 0 1.406-.973 2.45-2.335 2.45m33.541-6.334a1.24 1.24 0 0 0-.483-.471 1.4 1.4 0 0 0-.693-.17q-.384 0-.693.17a1.24 1.24 0 0 0-.484.471q-.174.302-.174.681 0 .375.174.677.175.3.484.471t.693.17.693-.17.483-.471.175-.676q0-.38-.175-.682m-.211 1.247a1 1 0 0 1-.394.39 1.15 1.15 0 0 1-.571.14 1.16 1.16 0 0 1-.576-.14 1 1 0 0 1-.391-.39 1.14 1.14 0 0 1-.14-.566q0-.316.14-.562t.391-.388.576-.14q.32 0 .57.14.253.141.395.39t.142.565q0 .312-.142.56m-19.835-5.78c-.85 0-1.468.6-1.468 1.396s.619 1.397 1.468 1.397c.866 0 1.485-.6 1.485-1.397 0-.796-.619-1.397-1.485-1.397m19.329 5.19a.31.31 0 0 0 .134-.262q0-.168-.132-.266-.132-.099-.381-.099h-.588v1.229h.284v-.489h.154l.374.489h.35l-.41-.518a.5.5 0 0 0 .215-.084m-.424-.109h-.26v-.3h.27q.12 0 .184.036a.12.12 0 0 1 .065.116.12.12 0 0 1-.067.111.4.4 0 0 1-.192.037M69.607 9.252h-2.263c-.08 0-.124.044-.124.124v8.56c0 .08.044.123.124.123h2.263c.08 0 .124-.044.124-.123v-8.56c0-.08-.044-.124-.124-.124m-3.333 6.605a2.1 2.1 0 0 1-1.053.257c-.725 0-1.185-.425-1.185-1.362v-3.484h2.211c.08 0 .124-.044.124-.124V9.376c0-.08-.044-.124-.124-.124h-2.21V6.944c0-.097-.063-.15-.15-.08l-3.954 3.113c-.053.044-.07.088-.07.16v1.007c0 .08.044.124.123.124h1.539v3.855c0 2.087 1.203 3.06 2.918 3.06.743 0 1.46-.194 1.884-.442.062-.035.07-.07.07-.133v-1.68c0-.088-.044-.115-.123-.07" transform="translate(-0.95,0)"></path>
+      </svg>
+      </a>
+    </div>
+  </div>
+  <div class="center-section">
+    <a href="/shazam" class="nav-button home-icon">
+      <img src="{% static 'img/shazam2.png' %}" alt="Shazam" style="width: 55px; height: 55px;" />
+    </a>
+    <form action="{% url 'search' %}" method="get" class="search-form">
+      <div class="search-bar">
+        {% csrf_token %}
+        <svg role="img" height="24" width="24" viewBox="0 0 24 24">
+          <path d="M10.533 1.279c-5.18 0-9.407 4.14-9.407 9.279s4.226 9.279 9.407 9.279c2.234 0 4.29-.77 5.907-2.058l4.353 4.353a1 1 0 1 0 1.414-1.414l-4.344-4.344a9.157 9.157 0 0 0 2.077-5.816c0-5.14-4.226-9.28-9.407-9.28zm-7.407 9.279c0-4.006 3.302-7.28 7.407-7.28s7.407 3.274 7.407 7.28-3.302 7.279-7.407 7.279-7.407-3.273-7.407-7.28z" fill="currentColor"></path>
+        </svg>
+      <input type="search" name="q" placeholder="What do you want to play?">
+    </div>
+    </form>
+  </div>
+
+  <div class="right-section">
+    <button class="login-button">Welcome {{user.username}}</button>
+    <a href="{% url 'logout' %}">
+    <button class="logout-button">Log out</button>
+    </a>
+  </div>
+</header>
+
+<body class="bg-black text-white flex">
+    <div class="container">
+      <div class="sidebar">
+        <div class="library">
+          <div class="library-header">
+            <div class="link-flex">
+              <img src="{% static 'assets/playlist.png' %}" alt="Library" />
+              <p>Your Library</p>
+            </div>
+            <div class="library-actions">
+              <img src="{% static 'assets/plus.png' %}" />
+              <img src="{% static 'assets/boxes.png' %}" />
+            </div>
+          </div>
+          <div class="link-flex" style="gap: 0.5rem">
+            <div class="chip">Playlists</div>
+            <div class="chip">Artists</div>
+            <div class="chip">Podcasts & Shows</div>
+          </div>
+          <div class="link-flex" style="gap: 0.5rem">
+            <img src="{% static 'assets/search.png' %}" />
+            <p>Recents</p>
+          </div>
+
+          <div class="albums">
+            <div class="link-flex album-flex">
+              <img src="{% static 'assets/mix1.jpeg' %}" class="album-cover" />
+              <div class="col-flex">
+                <p class="album-name">Workout</p>
+                <p>Playlist &#x2022; Spotify</p>
+              </div>
+            </div>
+          </div>
+          <!-- Put your playlists here -->
+        </div>
+      </div>
+      <div class="main-content">
+        <div class="navbar">
+          <div class="link-flex">
+            <img src="{% static 'assets/back_navigation.png' %}" />
+            <img src="{% static 'assets/forward_navigation.png' %}" />
+          </div>
+          <!-- Navbar content -->
+          <div class="link-flex" style="gap: 0; column-gap: 0.5rem">
+            <div class="chip">Upgrade</div>
+            <div class="chip">Install App</div>
+          </div>
+        </div>
+        <!-- Top Monthly Artists -->
+        {% block artists_section %}
+        <div class="section-header">
+          <h3>Popular artists</h3>
+          <a href="/artist_page" style="text-decoration: none; color: inherit;">
+            <button id="showAllArtists" class="show-all-btn">Show all</button>
+          </a>
+      </div>
+      <div class="cards-container">
+          {% for artist in top_artists_info|slice:":6" %}
+          <a href="{% url 'profile' artist.id %}" style="text-decoration: none; color: inherit;">
+              <div class="card">
+                  <img src="{{artist.image}}" class="card-img" />
+                  <p class="card-name">{{artist.name}}</p>
+                  <p class="card-title">Artist</p>
+              </div>
+          </a>
+          {% endfor %}
+      </div>
+      {% endblock %}
+
+      {% block additional_content %}
+        <!-- Made For You -->
+        <h3>Weekly Songs</h3>
+        <div class="cards-track-container">
+          {% for track in first_six_tracks %}
+          <a href="{% url 'music' track.id %}" style="text-decoration: none; color: inherit;">
+          <div class="card-track">
+            <img src="{{track.image}}" class="card-track-img" />
+            <p class="card-track-name">{{track.name}}</p>
+            <p class="card-track-description">{{track.artist}}</p>
+          </div>
+          </a>
+          {% endfor %}
+        </div>
+        <h3>Monthly Songs</h3>
+        <div class="cards-track-container">
+          {% for track in second_six_tracks %}
+          <a href="{% url 'music' track.id %}" style="text-decoration: none; color: inherit;">
+          <div class="card-track">
+            <img src="{{track.image}}" class="card-track-img" />
+            <p class="card-track-name">{{track.name}}</p>
+            <p class="card-track-description">{{track.artist}}</p>
+          </div>
+          </a>
+          {% endfor %}
+        </div>
+        <h3>You Might Also Like</h3>
+        <div class="cards-track-container">
+          {% for track in third_six_tracks %}
+          <a href="{% url 'music' track.id %}" style="text-decoration: none; color: inherit;">
+          <div class="card-track">
+            <img src="{{track.image}}" class="card-track-img" />
+            <p class="card-track-name">{{track.name}}</p>
+            <p class="card-track-description">{{track.artist}}</p>
+          </div>
+          </a>
+          {% endfor %}
+        </div>
+
+        <h3>Playlists For You</h3>
+        <div class="cards-container">
+          <div class="card">
+            <img src="{% static 'assets/mix1.jpeg' %}" class="card-img" />
+            <p class="card-name">Workout</p>
+            <p class="card-description">Pop hits to keep you fresh!</p>
+          </div>
+          <div class="card">
+            <img src="{% static 'assets/mix2.jpeg' %}" class="card-img" />
+            <p class="card-name">Workout</p>
+            <p class="card-description">Pop hits to keep you fresh!</p>
+          </div>
+        </div>
+      </div>
+      {% endblock %}
+      {% block player%}
+      <div class="player">
+        <div class="volume-controls"></div>
+        <div class="player-center">
+          <div class="player-controls">
+            <img
+              style="height: 1rem; margin-right: 1rem; opacity: 0.8"
+              src="{% static 'assets/shuffle.png' %}"
+            />
+            <img
+              style="height: 1rem; margin-right: 1rem; opacity: 0.8"
+              src="{% static 'assets/previous_musicbar.png' %}"
+            />
+            <img
+              style="height: 2rem; margin-right: 1rem"
+              src="{% static 'assets/play_musicbar.png' %}"
+            />
+            <img
+              style="height: 1rem; margin-right: 1rem; opacity: 0.8"
+              src="{% static 'assets/next_musicbar.png' %}"
+            />
+            <img
+              style="height: 1rem; margin-right: 1rem; opacity: 0.8"
+              src="{% static 'assets/loop.png' %}"
+            />
+          </div>
+          <div class="player-timeline">
+            <span class="current-time">0:00</span>
+            <input
+              type="range"
+              class="timeline-slider"
+              min="0"
+              max="100"
+              step="1"
+              value="0"
+            />
+            <span class="total-time">{{ track_info.duration_ms }}</span>
+          </div>
+        </div>
+
+        <div class="volume-controls">
+          <img
+            src="{% static 'assets/device.png' %}"
+            style="height: 1rem; margin-right: 1rem; opacity: 0.8"
+            alt="Volume"
+          />
+          <img
+            src="{% static 'assets/playlist.png' %}"
+            style="height: 1rem; margin-right: 1rem; opacity: 0.8"
+            alt="Settings"
+          />
+          <img
+            src="{% static 'assets/music.png' %}"
+            style="height: 1rem; margin-right: 1rem; opacity: 0.8"
+            alt="Fullscreen"
+          />
+          <input
+            type="range"
+            class="volume-slider"
+            min="0"
+            max="100"
+            step="1"
+            value="50"
+          />
+        </div>
+        {% endblock %}
+      </div>
+    </div>
+    <div class="icon-container">
+      <i id="scrollUpIcon"><img src="{% static 'assets/up-arrow.png' %}" alt="Cuộn lên"></i>
+    </div>
+  </body>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const scrollUpIcon = document.getElementById("scrollUpIcon");
+      const scrollToPosition = window.innerHeight * 0.2; // Hiển thị khi cuộn 20% chiều cao màn hình
+    
+      function handleScroll() {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    
+        if (scrollTop >= scrollToPosition) {
+          scrollUpIcon.style.display = "block";
+        } else {
+          scrollUpIcon.style.display = "none";
+        }
+      }
+    
+      function scrollToTop() {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+      }
+    
+      // Khởi tạo trạng thái ban đầu
+      scrollUpIcon.style.display = "none";
+    
+      // Thêm event listeners
+      window.addEventListener("scroll", handleScroll);
+      scrollUpIcon.addEventListener("click", scrollToTop);
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+    const trackNames = document.querySelectorAll('.card-track-name');
+    
+    trackNames.forEach(name => {
+      if (name.scrollWidth > name.clientWidth) {
+        name.classList.add('long-name');
+      }
+    });
+  });
+  document.addEventListener('DOMContentLoaded', function() {
+    // Player controls
+    const playButton = document.querySelector('.player-controls img[src*="play_musicbar.png"]');
+    const pauseButton = document.querySelector('.player-controls img[src*="pause_musicbar.png"]');
+    const nextButton = document.querySelector('.player-controls img[src*="next_musicbar.png"]');
+    const prevButton = document.querySelector('.player-controls img[src*="previous_musicbar.png"]');
+    const shuffleButton = document.querySelector('.player-controls img[src*="shuffle.png"]');
+    const loopButton = document.querySelector('.player-controls img[src*="loop.png"]');
+    const audio = new Audio(); // Placeholder for audio element
+
+    let isPlaying = false;
+    let currentTrackIndex = 0;
+
+    function togglePlayPause() {
+      if (isPlaying) {
+        audio.pause();
+        isPlaying = false;
+        console.log('Paused');
+      } else {
+        audio.play();
+        isPlaying = true;
+        console.log('Playing');
+      }
+    }
+
+    function nextTrack() {
+      currentTrackIndex = (currentTrackIndex + 1) % trackQueue.length;
+      playTrack(currentTrackIndex);
+      console.log('Next track');
+    }
+
+    function prevTrack() {
+      currentTrackIndex = (currentTrackIndex - 1 + trackQueue.length) % trackQueue.length;
+      playTrack(currentTrackIndex);
+      console.log('Previous track');
+    }
+
+    function seekForward() {
+      audio.currentTime += 10;
+      console.log('Seek forward 10s');
+    }
+
+    function seekBackward() {
+      audio.currentTime -= 10;
+      console.log('Seek backward 10s');
+    }
+
+    if (playButton) playButton.addEventListener('click', togglePlayPause);
+    if (pauseButton) pauseButton.addEventListener('click', togglePlayPause);
+    if (nextButton) nextButton.addEventListener('click', nextTrack);
+    if (prevButton) prevButton.addEventListener('click', prevTrack);
+    if (shuffleButton) shuffleButton.addEventListener('click', seekForward);
+    if (loopButton) loopButton.addEventListener('click', seekBackward);
+
+    // Initialize first track
+    playTrack(currentTrackIndex);
+  });
+  </script>
+
+</html>
